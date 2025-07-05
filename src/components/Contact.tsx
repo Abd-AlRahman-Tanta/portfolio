@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react"
+import { useCallback, useContext, useEffect, useRef, useState, type FormEvent } from "react"
 import { FaPhoneAlt } from "react-icons/fa"
 import { IoLocationSharp } from "react-icons/io5"
 import { TfiEmail } from "react-icons/tfi"
@@ -12,19 +12,34 @@ const Contact = () => {
   const email = useRef<HTMLInputElement | null>(null);
   const phone = useRef<HTMLInputElement | null>(null);
   const message = useRef<HTMLTextAreaElement | null>(null);
+  const [done, setDone] = useState(false);
   let data = useRef<{ name: string, email: string, phone: string, message: string }>({ name: "", email: "", phone: "", message: "" })
-  function sendEmail() {
-    setTimeout(() => {
-      if (data.current.email != "" && data.current.name != "" && data.current.phone != "" && data.current.message != "") {
-        data.current = { name: "", email: "", phone: "", message: "" };
-        if (name.current != null && email.current && phone.current && message.current) {
-          name.current.value = "";
-          email.current.value = "";
-          phone.current.value = "";
-          message.current.value = "";
+  async function sendEmail(event: FormEvent) {
+    event.preventDefault();
+    if (data.current.email != "" && data.current.name != "" && data.current.phone != "" && data.current.message != "") {
+      let text =
+        `
+        *Name* : ${data.current.name}
+        *Email* : ${data.current.email}
+        *Phone* : ${data.current.phone}
+        *Message* : ${data.current.message}
+      `
+      await fetch("https://api.telegram.org/bot7444141584:AAGA-Aqc6FuE0UHN0KSYA4kCTdGhqfOd89g/sendMessage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ chat_id: 1179511113, text: text }) }).then((res) => {
+        if (res.ok) {
+          data.current = { name: "", email: "", phone: "", message: "" };
+          if (name.current != null && email.current && phone.current && message.current) {
+            name.current.value = "";
+            email.current.value = "";
+            phone.current.value = "";
+            message.current.value = "";
+          }
+          setDone(true);
+          setTimeout(() => {
+            setDone(false);
+          }, 2000)
         }
-      }
-    }, 500)
+      })
+    }
   }
 
   const checkOnContactStretch = useCallback((): void => {
@@ -80,8 +95,8 @@ const Contact = () => {
           </div>
         </div>
         <div className="w-full lg:max-w-[780px] min-h-[330px]">
-          <p className=" text-mainText dark:text-dark-mainText font-semibold text-[18px] mb-5 duration-300 text-center ">Please, if you are in Syria, turn on the VPN so that I can receive your message!!!!</p>
-          <form target="_blank" onSubmit={sendEmail} action="https://formsubmit.co/iamwhitebeard2@gmail.com" method="POST" className={` text-mainText dark:text-dark-mainText duration-300 lg:grow  w-full min-h-[330px] ${stretch ? " delay-700 opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-[opacity,translate] duration-[1s,2s]  `}>
+          <p className={` ${done ? "block" : "hidden"} text-green-600 p-3 rounded-2xl bg-[#e3eaf8] dark:bg-[#232d42] font-semibold text-[18px] mb-5 duration-300 text-center `}>Done!!! , Message Submitted Succesfully!</p>
+          <form onSubmit={sendEmail} className={` text-mainText dark:text-dark-mainText duration-300 lg:grow  w-full min-h-[330px] ${stretch ? " delay-700 opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-[opacity,translate] duration-[1s,2s]  `}>
             <input type="hidden" name="_captcha" defaultValue="false" />
             <div className=" w-full flex flex-col lg:flex-row justify-center items-center gap-6  ">
               <input ref={name} defaultValue={data.current.name} onChange={(event) => { data.current = { ...data.current, name: event.target.value } }} required className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 placeholder:text-secondText w-full lg:w-1/2 rounded-md border-1 border-secondText h-[60px] pl-7  " type="text" name="Name" placeholder="Full Name" />
