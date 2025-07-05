@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useRef, useState, type FormEvent } from "react"
+import { useCallback, useContext, useEffect, useRef, useState } from "react"
 import { FaPhoneAlt } from "react-icons/fa"
 import { IoLocationSharp } from "react-icons/io5"
 import { TfiEmail } from "react-icons/tfi"
@@ -13,27 +13,18 @@ const Contact = () => {
   const phone = useRef<HTMLInputElement | null>(null);
   const message = useRef<HTMLTextAreaElement | null>(null);
   let data = useRef<{ name: string, email: string, phone: string, message: string }>({ name: "", email: "", phone: "", message: "" })
-  const sendEmail = (event: FormEvent): void => {
-    if (data.current.email != "" && data.current.name != "" && data.current.phone != "" && data.current.message != "") {
-      event.preventDefault();
-      const title = encodeURIComponent("New Message From Portfolio");
-      const body = encodeURIComponent(
-        `
-        Name : ${data.current.name}
-        Email : ${data.current.email}
-        Phone : ${data.current.phone}
-        Message : ${data.current.message}
-        `);
-      const link = `https://mail.google.com/mail/?view=cm&fs=1&to=iamwhitebeard2@gmail.com&su=${title}&body=${body}`;
-      window.open(link, "_blank");
-      data.current = { name: "", email: "", phone: "", message: "" };
-      if (name.current != null && email.current && phone.current && message.current) {
-        name.current.value = "";
-        email.current.value = "";
-        phone.current.value = "";
-        message.current.value = "";
+  function sendEmail() {
+    setTimeout(() => {
+      if (data.current.email != "" && data.current.name != "" && data.current.phone != "" && data.current.message != "") {
+        data.current = { name: "", email: "", phone: "", message: "" };
+        if (name.current != null && email.current && phone.current && message.current) {
+          name.current.value = "";
+          email.current.value = "";
+          phone.current.value = "";
+          message.current.value = "";
+        }
       }
-    }
+    }, 500)
   }
 
   const checkOnContactStretch = useCallback((): void => {
@@ -88,15 +79,19 @@ const Contact = () => {
             <p className=" text-[14px]  text-secondText flex flex-col justify-start items-center sm:items-start gap-1.5  ">Address<span className=" sm:text-[18px] font-medium text-mainText dark:text-dark-mainText duration-300  ">Damascus,syria</span></p>
           </div>
         </div>
-        <form onSubmit={sendEmail} className={` text-mainText dark:text-dark-mainText duration-300 lg:grow  w-full lg:max-w-[780px] min-h-[330px] ${stretch ? " delay-700 opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-[opacity,translate] duration-[1s,2s]  `} action="https://formsubmit.co/iamwhitebeard2@gmail.com" method="POST">
-          <div className=" w-full flex flex-col lg:flex-row justify-center items-center gap-6  ">
-            <input ref={name} defaultValue={data.current.name} onChange={(event) => { data.current = { ...data.current, name: event.target.value } }} required className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 placeholder:text-secondText w-full lg:w-1/2 rounded-md border-1 border-secondText h-[60px] pl-7  " type="text" name="Name" placeholder="Full Name" />
-            <input ref={email} defaultValue={data.current.email} onChange={(event) => { data.current = { ...data.current, email: event.target.value } }} required placeholder="Your Email" className=" outline-0 placeholder:text-secondText w-full lg:w-1/2 rounded-md border-1 dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] border-secondText h-[60px] pl-7  " type="email" name="Email" />
-          </div>
-          <input ref={phone} defaultValue={data.current.phone} onChange={(event) => { data.current = { ...data.current, phone: event.target.value } }} className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 placeholder:text-secondText block my-7 w-full rounded-md border-1  border-secondText h-[60px] pl-7  " required placeholder="Phone Number" type="text" name="PhoneNumber" />
-          <textarea ref={message} defaultValue={data.current.message} onChange={(event) => { data.current = { ...data.current, message: event.target.value } }} className=" resize-none dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 pt-7 placeholder:text-secondText block w-full rounded-md border-1 border-secondText h-[180px] pl-7 mb-5  " required placeholder="Your Message" name="Message" id=""></textarea>
-          <button className=" my-9  mx-auto w-[160px] h-[50px] bg-[#0C96E2] text-white rounded-lg flex justify-center items-center hover:scale-105 duration-300 cursor-pointer hover:bg-[#0C96E299] " type="submit">Send Message</button>
-        </form>
+        <div className="w-full lg:max-w-[780px] min-h-[330px]">
+          <p className=" text-mainText dark:text-dark-mainText font-semibold text-[18px] mb-5 duration-300 text-center ">Please, if you are in Syria, turn on the VPN so that I can receive your message!!!!</p>
+          <form target="_blank" onSubmit={sendEmail} action="https://formsubmit.co/iamwhitebeard2@gmail.com" method="POST" className={` text-mainText dark:text-dark-mainText duration-300 lg:grow  w-full min-h-[330px] ${stretch ? " delay-700 opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-[opacity,translate] duration-[1s,2s]  `}>
+            <input type="hidden" name="_captcha" defaultValue="false" />
+            <div className=" w-full flex flex-col lg:flex-row justify-center items-center gap-6  ">
+              <input ref={name} defaultValue={data.current.name} onChange={(event) => { data.current = { ...data.current, name: event.target.value } }} required className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 placeholder:text-secondText w-full lg:w-1/2 rounded-md border-1 border-secondText h-[60px] pl-7  " type="text" name="Name" placeholder="Full Name" />
+              <input ref={email} defaultValue={data.current.email} onChange={(event) => { data.current = { ...data.current, email: event.target.value } }} required placeholder="Your Email" className=" outline-0 placeholder:text-secondText w-full lg:w-1/2 rounded-md border-1 dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] border-secondText h-[60px] pl-7  " type="email" name="Email" />
+            </div>
+            <input ref={phone} defaultValue={data.current.phone} onChange={(event) => { data.current = { ...data.current, phone: event.target.value } }} className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 placeholder:text-secondText block my-7 w-full rounded-md border-1  border-secondText h-[60px] pl-7  " required placeholder="Phone Number" type="text" name="PhoneNumber" />
+            <textarea ref={message} defaultValue={data.current.message} onChange={(event) => { data.current = { ...data.current, message: event.target.value } }} className=" resize-none dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] outline-0 pt-7 placeholder:text-secondText block w-full rounded-md border-1 border-secondText h-[180px] pl-7 mb-5  " required placeholder="Your Message" name="Message" id=""></textarea>
+            <button className=" my-9  mx-auto w-[160px] h-[50px] bg-[#0C96E2] text-white rounded-lg flex justify-center items-center hover:scale-105 duration-300 cursor-pointer hover:bg-[#0C96E299] " type="submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
   )

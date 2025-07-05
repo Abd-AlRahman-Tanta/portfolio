@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import ReactDOM from "react-dom";
 import { BsArrowsFullscreen } from "react-icons/bs";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 
@@ -10,6 +11,7 @@ import { Link } from "react-router-dom";
 const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, projectName: string, projectTools: string, liveLink: string, id: string }) => {
   const [full, setFull] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
+  const [scale, setScale] = useState<boolean>(false);
   let x: boolean = false;
   const checkOnScrollStart = () => {
     x = false;
@@ -31,11 +33,15 @@ const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, p
         </Link>
         <BsArrowsFullscreen onTouchEnd={() => setShow(false)} onClick={() => setFull(!full)} className={`absolute top-1/2 -translate-y-1/2 right-1/3 -translate-x-1/3 z-30 opacity-0 scale-0  ${show && "opacity-100 scale-100"}  group-hover:opacity-100 group-hover:scale-100  cursor-pointer hover:scale-110 delay-200 duration-300 text-2xl text-white `} />
       </div>
-      <Link to={`/project/${id}`} className="font-semibold text-[22px] text-mainText dark:text-dark-mainText mx-4  duration-300  hover:underline ">{projectName}</Link>
-      <div className="flex justify-between gap-2.5 items-center mx-4 mt-7 mb-3">
-        <p className=" duration-300 p-3 bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl ">{projectTools}</p>
-        <a title="Live Project" className="hover:scale-110 duration-300" href={liveLink} target="-blank" >
-          <img className="w-8" src="/portfolio/assets/imgs/Icon.png" alt="" />
+      <div className="flex justify-between items-center gap-2 mx-4">
+        <Link to={`/project/${id}`} className=" font-semibold text-center  text-[22px] text-mainText dark:text-dark-mainText   duration-300  hover:underline ">{projectName}</Link>
+        <Link to={`/project/${id}`} className=" flex justify-center items-center gap-2 text-[14px] font-normal text-[#0C96E2] bg-[#e3eaf8] dark:bg-[#232d42] p-2 rounded-2xl  hover:scale-110 duration-300"><FaLongArrowAltLeft /> Details</Link>
+      </div>
+      <div className="flex  justify-between gap-5 items-center mx-4 mt-7 mb-3">
+        <p className=" duration-300 py-3 px-1.5 text-[15px] text-center bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl ">{projectTools}</p>
+        <a onTouchStart={() => { setScale(true) }} onTouchEnd={() => setScale(false)} style={{ flexDirection: `${window.innerWidth < 300 ? "column" : "row"}` }} title="Live Project" className={` ${scale ? "scale-120" : "scale-100"} hover:scale-110 rounded-2xl p-3 bg-[#e3eaf8] dark:bg-[#232d42] duration-300 flex  text-[14px] justify-center items-center text-[#0C96E2] gap-2.5 `} href={liveLink} target="-blank" >
+          Live
+          <img className="w-7" src="/portfolio/assets/imgs/Icon.png" alt="" />
         </a>
       </div>
 

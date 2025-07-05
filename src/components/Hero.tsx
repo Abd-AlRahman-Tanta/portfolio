@@ -1,7 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import { Body, Show } from "../App";
 const Hero = () => {
+  const [scale, setScale] = useState<boolean>(false);
   const offset = useContext(Body);
   const show = useContext(Show);
   const hero = useRef<HTMLDivElement | null>(null);
@@ -35,7 +36,7 @@ const Hero = () => {
           Frontend Developer</span>
         </h1>
         <p className="w-full text-heroDescription dark:text-dark-heroDescription lg:max-w-[370px] text-[18px] ">Agency-quality Webflow websites with the personal touch of a freelancer.</p>
-        <button className="mx-auto lg:mx-0 w-[155px] h-[50px] rounded-sm text-mainText dark:text-dark-mainText bg-white dark:bg-[#0C96E299] font-medium text-[18px] flex justify-center items-center cursor-pointer hover:scale-105 duration-300 mt-14 border-1 border-[#0C96E299] dark:border-white "><a href="/portfolio/cv/Abd-Al-Rahman-Tanta.pdf" download={"Abd-Al-Rahman-Tanta.pdf"}>Download Cv</a></button>
+        <a className={`block ${scale ? "scale-120" : "scale-100"} mx-auto lg:mx-0 w-[155px] h-[50px] rounded-sm text-mainText dark:text-dark-mainText bg-white dark:bg-[#0C96E299] font-medium text-[18px] flex justify-center items-center cursor-pointer hover:scale-105 duration-300 mt-14 border-1 border-[#0C96E299] dark:border-white `} onTouchStart={() => { setScale(true) }} onTouchEnd={() => setScale(false)} href="/portfolio/cv/Abd-Al-Rahman-Tanta.pdf" download={"Abd-Al-Rahman-Tanta.pdf"}>Download Cv</a>
       </div>
 
     </div>

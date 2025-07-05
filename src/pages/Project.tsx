@@ -106,7 +106,7 @@ const Project = () => {
         projects.map((project) => {
           if (project.id == id)
             return (
-              <div key={id} className=" min-h-screen pt-[120px] px-5 lg:px-[70px] flex flex-col-reverse lg:flex-row justify-between items-center mb-20 gap-9   ">
+              <div key={id} className="  min-h-screen pt-[120px] px-5 lg:px-[70px] flex flex-col-reverse lg:flex-row justify-between items-center mb-20 gap-9   ">
                 <div className=" group w-full lg:max-w-[600px] min-h-[400px] relative ">
                   <img src={project.img} alt="" className=" h-full w-full  absolute top-0  z-10 object-cover  " />
                   <div onTouchStart={checkOnScrollStart} onTouchMove={checkOnScroll} onTouchEnd={checkOnTouch} className={` bg-[#00000080] w-full h-full absolute z-20 opacity-0 ${show && "opacity-100"} group-hover:opacity-100  duration-300 `}></div>
@@ -123,8 +123,8 @@ const Project = () => {
                     </a>
                   </div>
                   <p className=" mb-6 mt-4 text-[18px] text-mainText dark:text-dark-mainText leading-[28px] ">{project.projectDescription}</p>
-                  <h2 className="p-3 bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl flex justify-start items-center gap-2 font-normal duration-300"><span className="block font-medium text-[18px]  text-mainText dark:text-dark-mainText leading-[28px]">Languages & Framework and Libraries :</span> {project.projectTools}</h2>
-                  <a title="GitHub Repositorie" className=" mx-auto lg:mx-0 mt-8 w-[160px] h-[50px] bg-[#0C96E2] text-white rounded-lg flex justify-center items-center hover:scale-105 duration-300 cursor-pointer  " target="-blank" href="https://github.com/Abd-AlRahman-Tanta">Github Repo</a>
+                  <h2 className="p-3 dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl flex justify-start items-center gap-2 font-normal duration-300"><span className="block font-medium text-[18px]  text-mainText dark:text-dark-mainText leading-[28px]">Languages & Framework and Libraries :</span> {project.projectTools}</h2>
+                  <a title="GitHub Repositorie" className=" mx-auto lg:mx-0 mt-8 w-[160px] h-[50px] bg-[#0C96E2] text-white rounded-lg flex justify-center items-center horepoer:scale-105 duration-300 cursor-pointer  " target="-blank" href={project.repoLink}>Github Repo</a>
                 </div>
               </div>
             )
@@ -137,8 +137,8 @@ const Project = () => {
           </div>
         </div>
       </div>
-      <div className=" px-[20px] lg:px-[70px] mt-20  ">
-        <div className="w-full flex flex-col lg:flex-row  justify-between items-center gap-10 ">
+      <div className="  mt-20 lg:px-[70px] ">
+        <div className="px-[20px] lg:px-0  w-full flex flex-col lg:flex-row  justify-between items-center gap-10 ">
           <div className="">
             <p className=" font-medium text-[20px] leading-[150%] text-[#0C96E2]  ">Portfolio</p>
             <h1 className=" font-semibold text-[40px] text-mainText dark:text-dark-mainText ">The Best <span className="text-[#0C96E2]">Projects</span></h1>
@@ -152,13 +152,13 @@ const Project = () => {
             </div>
           </div>
         </div>
-        <div onTouchStart={itIsTouch} onTouchMove={itIsMove} onTouchEnd={checkTouchOrMove} className={` flex justify-start items-center lg:gap-10 mt-10  overflow-hidden `}>
+        <div onTouchStart={itIsTouch} onTouchMove={itIsMove} onTouchEnd={checkTouchOrMove} className={` flex justify-start items-center lg:gap-10 mt-10  overflow-hidden  `}>
           {
             [...projects].reverse().map((project) => {
               if (project.id == id)
                 return;
               return (
-                <div style={{ transform: `${`translateX(-${slider * 100}%)`}`, right: `${window.innerWidth >= 992 ? `${slider * 40}px` : `0`}` }} className={`shrink-0 relative w-full duration-500 lg:w-[calc((100%-80px)/3)]`} key={project.id}>
+                <div style={{ transform: `${`translateX(-${slider * 100}%)`}`, right: `${window.innerWidth >= 992 ? `${slider * 56}px` : `${slider * 40}px`}` }} className={`shrink-0 relative w-[calc(100%-40px)]  my-3 mx-5 lg:mx-2  duration-500 lg:w-[calc((100%-128px)/3)]`} key={project.id}>
                   <Card img={project.img} projectName={project.projectName} projectTools={project.projectTools} liveLink={project.liveLink} id={project.id} />
                 </div>
               )
