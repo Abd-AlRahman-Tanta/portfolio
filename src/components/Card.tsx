@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, projectName: string, projectTools: string, liveLink: string, id: string }) => {
   const [full, setFull] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
-  const [scale, setScale] = useState<boolean>(false);
   let x: boolean = false;
   const checkOnScrollStart = () => {
     x = false;
@@ -39,7 +38,7 @@ const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, p
       </div>
       <div className="flex  justify-between gap-5 items-center mx-4 mt-7 mb-3">
         <p className=" duration-300 py-3 px-1.5 text-[15px] text-center bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl ">{projectTools}</p>
-        <a onTouchStart={() => { setScale(true) }} onTouchEnd={() => setScale(false)} style={{ flexDirection: `${window.innerWidth < 300 ? "column" : "row"}` }} title="Live Project" className={` ${scale ? "scale-120" : "scale-100"} hover:scale-110 rounded-2xl p-3 bg-[#e3eaf8] dark:bg-[#232d42] duration-300 flex  text-[14px] justify-center items-center text-[#0C96E2] gap-2.5 `} href={liveLink} target="-blank" >
+        <a style={{ flexDirection: `${window.innerWidth < 300 ? "column" : "row"}` }} title="Live Project" className={` hover:scale-110 rounded-2xl p-3 bg-[#e3eaf8] dark:bg-[#232d42] duration-300 flex  text-[14px] justify-center items-center text-[#0C96E2] gap-2.5 `} href={liveLink} target="-blank" >
           Live
           <img className="w-7" src="/portfolio/assets/imgs/Icon.png" alt="" />
         </a>

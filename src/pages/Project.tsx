@@ -107,7 +107,7 @@ const Project = () => {
           if (project.id == id)
             return (
               <div key={id} className="  min-h-screen pt-[120px] px-5 lg:px-[70px] flex flex-col-reverse lg:flex-row justify-between items-center mb-20 gap-9   ">
-                <div className=" group w-full lg:max-w-[600px] min-h-[400px] relative ">
+                <div className=" group w-full lg:w-1/2 min-h-[400px] relative ">
                   <img src={project.img} alt="" className=" h-full w-full  absolute top-0  z-10 object-cover  " />
                   <div onTouchStart={checkOnScrollStart} onTouchMove={checkOnScroll} onTouchEnd={checkOnTouch} className={` bg-[#00000080] w-full h-full absolute z-20 opacity-0 ${show && "opacity-100"} group-hover:opacity-100  duration-300 `}></div>
                   <Link onTouchEnd={() => setShow(false)} className={` group/link w-8 absolute top-1/2 -translate-y-1/2 left-1/3 -translate-x-1/3 z-30 opacity-0 scale-0 ${show && "  opacity-100 scale-100 "} group-hover:opacity-100 group-hover:scale-100   cursor-pointer delay-200 duration-300`} to={`/project/${id}`}>
@@ -115,7 +115,7 @@ const Project = () => {
                   </Link>
                   <BsArrowsFullscreen onTouchEnd={() => setShow(false)} onClick={() => setFull(!full)} className={`absolute top-1/2 -translate-y-1/2 right-1/3 -translate-x-1/3 z-30 opacity-0 scale-0  ${show && "opacity-100 scale-100"}  group-hover:opacity-100 group-hover:scale-100  cursor-pointer hover:scale-110 delay-200 duration-300 text-2xl text-white `} />
                 </div>
-                <div className="max-w-[570px]">
+                <div className="w-full lg:w-1/2">
                   <div className="flex justify-between items-center gap-4  ">
                     <h1 className="text-mainText dark:text-dark-mainText font-semibold text-[28px]">{project.projectName}</h1>
                     <a title="Live Project" className="hover:scale-110 duration-300" href={project.liveLink} target="-blank" >
