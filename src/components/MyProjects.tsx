@@ -24,7 +24,9 @@ const MyProjects = () => {
     }
   }
   useEffect(() => {
-    checkMyProjectsOffsetTop();
+    setTimeout(() => {
+      checkMyProjectsOffsetTop();
+    }, 200)
   }, [window.innerWidth]);
 
   useEffect(() => {

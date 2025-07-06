@@ -23,7 +23,9 @@ const Hero = () => {
 
 
   useEffect(() => {
-    checkMyHeroOffsetTop();
+    setTimeout(() => {
+      checkMyHeroOffsetTop();
+    }, 200);
   }, [window.innerWidth])
 
   return (
@@ -32,10 +34,10 @@ const Hero = () => {
       <FaArrowDown className={`text-2xl text-[#0C96E2]  animate-bounce  lg:absolute lg:bottom-10 lg:left-1/2 lg:-translate-x-1/2 `} />
       <div className="lg:w-max w-full lg:text-start text-center relative ">
         <div className="absolute w-full h-full bg-[url(/assets/imgs/radial.png)] blur-3xl -z-10"></div>
-        <h1 className="lg:w-max w-full text-[36px] lg:text-[40px] xl:text-[55px] leading-[120%] mb-5">HEY! <span className="font-bold">I’m <br /> <span className="bg-gradient-to-r from-[#60a5fa] to-[#38bdf8] bg-clip-text text-transparent ">Abd Al-Rahman</span>, <br />
+        <h1 className="lg:w-max duration-30 w-full text-[36px] lg:text-[40px] xl:text-[55px] leading-[120%] mb-5">HEY! <span className="font-bold">I’m <br /> <span className="bg-gradient-to-r from-[#60a5fa] to-[#38bdf8] bg-clip-text text-transparent ">Abd Al-Rahman</span>, <br />
           Frontend Developer</span>
         </h1>
-        <p className="w-full text-heroDescription dark:text-dark-heroDescription lg:max-w-[370px] text-[18px] ">Agency-quality Webflow websites with the personal touch of a freelancer.</p>
+        <p className="w-full text-heroDescription dark:text-dark-heroDescription lg:max-w-[370px] text-[18px] duration-300">Agency-quality Webflow websites with the personal touch of a freelancer.</p>
         <a className={`block ${scale ? "scale-120" : "scale-100"} mx-auto lg:mx-0 w-[155px] h-[50px] rounded-sm text-mainText dark:text-dark-mainText bg-white dark:bg-[#0C96E299] font-medium text-[18px] flex justify-center items-center cursor-pointer hover:scale-105 duration-300 mt-14 border-1 border-[#0C96E299] dark:border-white `} onTouchStart={() => { setScale(true) }} onTouchEnd={() => setScale(false)} href="/portfolio/cv/Abd-Al-Rahman-Tanta.pdf" download={"Abd-Al-Rahman-Tanta.pdf"}>Download Cv</a>
       </div>
 

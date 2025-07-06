@@ -30,7 +30,9 @@ const Education = () => {
   }, [])
 
   useEffect(() => {
-    checkMyEducationOffsetTop();
+    setTimeout(() => {
+      checkMyEducationOffsetTop();
+    }, 200)
   }, [window.innerWidth])
 
   useEffect(() => {

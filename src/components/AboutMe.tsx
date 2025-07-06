@@ -27,7 +27,9 @@ const AboutMe = () => {
     }
   }
   useEffect(() => {
-    checkMyAboutMeOffsetTop();
+    setTimeout(() => {
+      checkMyAboutMeOffsetTop();
+    }, 200)
   }, [window.innerWidth])
   useEffect(() => {
     checkOnAboutStretch();

@@ -60,7 +60,9 @@ const Contact = () => {
     }
   }
   useEffect(() => {
-    checkMyContactOffsetTop();
+    setTimeout(() => {
+      checkMyContactOffsetTop();
+    }, 200)
   }, [window.innerWidth])
   useEffect(() => {
     checkOnContactStretch();

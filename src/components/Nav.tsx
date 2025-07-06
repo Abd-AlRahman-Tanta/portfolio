@@ -40,14 +40,14 @@ const Nav = ({ setMode, show }: { setMode: Dispatch<SetStateAction<boolean>>, sh
           else
             return { home: false, aboutMe: true, contact: false, projects: false, education: false }
         })
-      else if (scroll >= offset?.sectionScroll.education - 300 && scroll > offset.sectionScroll.aboutMe && scroll > offset.sectionScroll.home && scroll < offset.sectionScroll.projects - 300)
+      else if (scroll >= offset?.sectionScroll.education - 300 && scroll > offset.sectionScroll.aboutMe - 300 && scroll > offset.sectionScroll.home - 300 && scroll < offset.sectionScroll.projects - 300)
         setActive(prev => {
           if (prev.education == true)
             return prev;
           else
             return { home: false, aboutMe: false, contact: false, projects: false, education: true }
         })
-      else if (scroll >= offset?.sectionScroll.projects - 300 && scroll > offset.sectionScroll.projects && scroll > offset.sectionScroll.education && scroll > offset.sectionScroll.aboutMe && scroll > offset.sectionScroll.home && scroll < offset.sectionScroll.contact - 300)
+      else if (scroll >= offset?.sectionScroll.projects - 300 && scroll > offset.sectionScroll.education - 300 && scroll > offset.sectionScroll.aboutMe - 300 && scroll > offset.sectionScroll.home - 300 && scroll < offset.sectionScroll.contact - 300)
         setActive(prev => {
           if (prev.projects == true)
             return prev;
