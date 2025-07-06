@@ -9,11 +9,12 @@ const Hero = () => {
   const checkMyHeroOffsetTop = (): void => {
     if (hero.current) {
       offset?.setSectionScroll(prev => {
-        if (hero.current != null)
-          return {
-            ...prev,
-            home: hero.current.offsetTop
-          }
+        if (hero.current != null && hero.current != undefined) {
+          if (prev.home == hero.current.offsetTop)
+            return { ...prev }
+          else
+            return { ...prev, home: hero.current.offsetTop }
+        }
         else
           return { ...prev }
       })
@@ -23,10 +24,15 @@ const Hero = () => {
 
 
   useEffect(() => {
-    setTimeout(() => {
+    checkMyHeroOffsetTop();
+    const check = new ResizeObserver(() => {
       checkMyHeroOffsetTop();
-    }, 200);
-  }, [window.innerWidth])
+    });
+    hero.current && check.observe(hero.current);
+    return () => {
+      check.disconnect();
+    }
+  }, [])
 
   return (
     <div ref={hero} className={`opacity-0 -translate-x-full ${show && "opacity-100 translate-x-0"} w-full min-h-[calc(100vh-112px)] flex lg:justify-between items-center lg:flex-row-reverse flex-col-reverse gap-10 lg:gap-5 lg:px-[70px] px-[20px] mb-[80px] text-mainText dark:text-dark-mainText transition-[color,translate,opacity] duration-[0.3s,1s,2s] relative`}>

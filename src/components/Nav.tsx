@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState, type Dispatch, type SetStateAction } from "react"
+import { useContext, useEffect, useState, type Dispatch, type SetStateAction } from "react"
 import { FaBars } from "react-icons/fa"
 import { GoSun } from "react-icons/go"
 import { IoMdMoon } from "react-icons/io"
@@ -199,4 +199,4 @@ const Nav = ({ setMode, show }: { setMode: Dispatch<SetStateAction<boolean>>, sh
   )
 }
 
-export default memo(Nav)
+export default Nav

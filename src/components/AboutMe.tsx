@@ -16,21 +16,27 @@ const AboutMe = () => {
   const checkMyAboutMeOffsetTop = (): void => {
     if (aboutMe.current != null) {
       offset?.setSectionScroll(prev => {
-        if (aboutMe.current != null)
-          return {
-            ...prev,
-            aboutMe: aboutMe.current.offsetTop
-          }
+        if (aboutMe.current != null && aboutMe.current != undefined) {
+          if (prev.aboutMe == aboutMe.current.offsetTop)
+            return { ...prev }
+          else
+            return { ...prev, aboutMe: aboutMe.current.offsetTop }
+        }
         else
           return { ...prev }
       })
     }
   }
   useEffect(() => {
-    setTimeout(() => {
+    checkMyAboutMeOffsetTop();
+    const check = new ResizeObserver(() => {
       checkMyAboutMeOffsetTop();
-    }, 200)
-  }, [window.innerWidth])
+    });
+    aboutMe.current && check.observe(aboutMe.current)
+    return () => {
+      check.disconnect();
+    }
+  }, [stretch])
   useEffect(() => {
     checkOnAboutStretch();
     window.addEventListener("scroll", checkOnAboutStretch);

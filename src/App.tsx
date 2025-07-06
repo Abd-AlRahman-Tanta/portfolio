@@ -12,7 +12,6 @@ const App = () => {
   const [mode, setMode] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false)
   const [sectionScroll, setSectionScroll] = useState<SectionScroll>({ home: 0, education: 0, aboutMe: 0, projects: 0, contact: 0 });
-  const [update, reRender] = useState<boolean>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
   useEffect(() => {
     const img = new Image();
@@ -25,19 +24,10 @@ const App = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" })
   }, [matches[matches.length - 1].pathname])
-  const checkOffset = () => {
-    reRender(prev => !prev);
-  }
-  useEffect(() => {
-    window.matchMedia("(orientation:portrait)").addEventListener("change", checkOffset);
-    return () => {
-      window.matchMedia("(orientation:portrait)").removeEventListener("change", checkOffset)
-    }
-  }, [])
 
   useEffect(() => {
     if (loaded == true)
-      setTimeout(() => setShow(true), 100)
+      setTimeout(() => setShow(true), 200)
   }, [loaded])
   if (loaded == false)
     return (
@@ -45,7 +35,7 @@ const App = () => {
         <p>Loading.....</p>
         <p className="mt-2.5 mb-16">Please Wait....</p>
         <div className=" rounded-full w-[150px] h-[150px] bg-mainBackground dark:bg-dark-mainBackground border-2 border-y-[#0C96E2] border-x-transparent animate-spin "></div>
-        <div className="hidden">{mode} {update}</div>
+        <div className="hidden">{mode}</div>
       </div>
     )
   else if (loaded == true)

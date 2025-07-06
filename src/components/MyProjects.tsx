@@ -16,18 +16,27 @@ const MyProjects = () => {
   const checkMyProjectsOffsetTop = (): void => {
     if (myProjects.current) {
       offset?.setSectionScroll(prev => {
-        if (myProjects.current?.offsetTop)
-          return { ...prev, projects: myProjects.current?.offsetTop }
+        if (myProjects.current != null && myProjects.current != undefined) {
+          if (prev.projects == myProjects.current.offsetTop)
+            return { ...prev }
+          else
+            return { ...prev, projects: myProjects.current.offsetTop }
+        }
         else
           return { ...prev }
       })
     }
   }
   useEffect(() => {
-    setTimeout(() => {
+    checkMyProjectsOffsetTop();
+    const check = new ResizeObserver(() => {
       checkMyProjectsOffsetTop();
-    }, 200)
-  }, [window.innerWidth]);
+    });
+    myProjects.current && check.observe(myProjects.current)
+    return () => {
+      check.disconnect();
+    }
+  }, [stretch]);
 
   useEffect(() => {
     checkOnMyProjectsStretch();

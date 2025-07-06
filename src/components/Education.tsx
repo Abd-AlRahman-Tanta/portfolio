@@ -8,13 +8,14 @@ const Education = () => {
   const [stretch2, setStretch2] = useState<boolean>(false);
   const tryMe = useRef<HTMLDivElement | null>(null);
   const checkMyEducationOffsetTop = (): void => {
-    if (education.current) {
+    if (education.current != null) {
       offset?.setSectionScroll(prev => {
-        if (education.current != null)
-          return {
-            ...prev,
-            education: education.current.offsetTop
-          }
+        if (education.current != null && education.current != undefined) {
+          if (prev.education == education.current.offsetTop)
+            return { ...prev }
+          else
+            return { ...prev, education: education.current.offsetTop }
+        }
         else
           return { ...prev }
       })
@@ -30,10 +31,15 @@ const Education = () => {
   }, [])
 
   useEffect(() => {
-    setTimeout(() => {
+    checkMyEducationOffsetTop();
+    const check = new ResizeObserver(() => {
       checkMyEducationOffsetTop();
-    }, 200)
-  }, [window.innerWidth])
+    });
+    education.current && check.observe(education.current);
+    return () => {
+      check.disconnect()
+    }
+  }, [stretch, stretch2])
 
   useEffect(() => {
     checkOnEducationStretch();

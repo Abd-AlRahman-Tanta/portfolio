@@ -52,18 +52,27 @@ const Contact = () => {
   const checkMyContactOffsetTop = (): void => {
     if (contact.current) {
       offset?.setSectionScroll(prev => {
-        if (contact.current != null)
-          return { ...prev, contact: contact.current?.offsetTop }
+        if (contact.current != null && contact.current != undefined) {
+          if (prev.contact == contact.current.offsetTop)
+            return { ...prev }
+          else
+            return { ...prev, contact: contact.current.offsetTop }
+        }
         else
           return { ...prev }
       })
     }
   }
   useEffect(() => {
-    setTimeout(() => {
+    checkMyContactOffsetTop();
+    const check = new ResizeObserver(() => {
       checkMyContactOffsetTop();
-    }, 200)
-  }, [window.innerWidth])
+    });
+    contact.current && check.observe(contact.current)
+    return () => {
+      check.disconnect();
+    }
+  }, [stretch])
   useEffect(() => {
     checkOnContactStretch();
     window.addEventListener("scroll", checkOnContactStretch);
