@@ -19,11 +19,18 @@ const Contact = () => {
     if (data.current.email != "" && data.current.name != "" && data.current.phone != "" && data.current.message != "") {
       let text =
         `
-        *Name* : ${data.current.name}
-        *Email* : ${data.current.email}
-        *Phone* : ${data.current.phone}
-        *Message* : ${data.current.message}
-      `
+*Name* : ${data.current.name}
+
+*Email* : 
+${data.current.email}
+
+*Phone* : ${data.current.phone}
+
+
+*Message* : 
+
+${data.current.message}
+`
       await fetch("https://api.telegram.org/bot7444141584:AAGA-Aqc6FuE0UHN0KSYA4kCTdGhqfOd89g/sendMessage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ chat_id: 1179511113, text: text }) }).then((res) => {
         if (res.ok) {
           data.current = { name: "", email: "", phone: "", message: "" };
@@ -44,7 +51,7 @@ const Contact = () => {
 
   const checkOnContactStretch = useCallback((): void => {
     if (contact.current) {
-      if (contact.current.getBoundingClientRect().top <= (20 * contact.current.offsetTop) / 100) {
+      if (contact.current && window.scrollY >= (contact.current.offsetTop - 450)) {
         setStretch(true);
       }
     }
@@ -64,9 +71,13 @@ const Contact = () => {
     }
   }
   useEffect(() => {
-    checkMyContactOffsetTop();
-    const check = new ResizeObserver(() => {
+    setTimeout(() => {
       checkMyContactOffsetTop();
+    }, 1500)
+    const check = new ResizeObserver(() => {
+      setTimeout(() => {
+        checkMyContactOffsetTop();
+      }, 200)
     });
     contact.current && check.observe(contact.current)
     return () => {

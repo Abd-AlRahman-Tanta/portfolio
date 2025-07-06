@@ -23,17 +23,21 @@ const Education = () => {
   }
   const checkOnEducationStretch = useCallback(() => {
     if (education.current) {
-      if (education.current?.getBoundingClientRect().top <= (30 * education.current?.offsetTop) / 100)
+      if (education.current && window.scrollY >= (education.current.offsetTop - 450))
         setStretch(true);
-      if (tryMe.current && tryMe.current?.getBoundingClientRect().top <= (30 * (tryMe.current?.offsetTop + education.current.offsetTop)) / 100)
+      if (tryMe.current && window.scrollY >= ((tryMe.current?.offsetTop + education.current.offsetTop) - 450))
         setStretch2(true)
     }
   }, [])
 
   useEffect(() => {
-    checkMyEducationOffsetTop();
-    const check = new ResizeObserver(() => {
+    setTimeout(() => {
       checkMyEducationOffsetTop();
+    }, 1500)
+    const check = new ResizeObserver(() => {
+      setTimeout(() => {
+        checkMyEducationOffsetTop();
+      }, 200)
     });
     education.current && check.observe(education.current);
     return () => {

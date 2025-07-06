@@ -10,7 +10,7 @@ const MyProjects = () => {
   const [stretch, setStretch] = useState<boolean>(false);
   let count = 0;
   const checkOnMyProjectsStretch = useCallback(() => {
-    if (myProjects.current && myProjects.current?.getBoundingClientRect().top <= (20 * myProjects.current?.offsetTop) / 100)
+    if (myProjects.current && window.scrollY >= (myProjects.current?.offsetTop - 450))
       setStretch(true);
   }, [])
   const checkMyProjectsOffsetTop = (): void => {
@@ -28,9 +28,13 @@ const MyProjects = () => {
     }
   }
   useEffect(() => {
-    checkMyProjectsOffsetTop();
-    const check = new ResizeObserver(() => {
+    setTimeout(() => {
       checkMyProjectsOffsetTop();
+    }, 1500)
+    const check = new ResizeObserver(() => {
+      setTimeout(() => {
+        checkMyProjectsOffsetTop();
+      }, 200)
     });
     myProjects.current && check.observe(myProjects.current)
     return () => {
@@ -50,7 +54,7 @@ const MyProjects = () => {
       window.removeEventListener("scroll", checkOnMyProjectsStretch)
   }, [stretch])
   return (
-    <div ref={myProjects} className={` ${stretch ? "opacity-100 -translate-y-0" : "opacity-0 -translate-y-10"} px-[20px] lg:px-[70px] pt-[80px] transition-[color,background-color,opacity,translate] duration-[0.3s,0.3s,1s,2s]`}>
+    <div ref={myProjects} className={` ${stretch ? "opacity-100 -translate-y-0" : "opacity-0 -translate-y-10"} px-[20px] lg:px-[70px] mt-[80px] transition-[color,background-color,opacity,translate] duration-[0.3s,0.3s,1s,2s]`}>
       <div className="flex flex-col lg:flex-row gap-10 justify-between items-center ">
         <div className="text-center lg:text-start">
           <p className=" font-medium text-[20px] text-[#0C96E2] mb-2 leading-[150%] ">Portfolio</p>

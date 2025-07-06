@@ -9,7 +9,7 @@ const AboutMe = () => {
 
   const checkOnAboutStretch = useCallback(() => {
     if (aboutMe.current) {
-      if (aboutMe.current.getBoundingClientRect().top <= (60 * aboutMe.current.offsetTop) / 100)
+      if (aboutMe.current && window.scrollY >= (aboutMe.current.offsetTop - 400))
         setStretch(true);
     }
   }, []);
@@ -28,9 +28,13 @@ const AboutMe = () => {
     }
   }
   useEffect(() => {
-    checkMyAboutMeOffsetTop();
-    const check = new ResizeObserver(() => {
+    setTimeout(() => {
       checkMyAboutMeOffsetTop();
+    }, 1500)
+    const check = new ResizeObserver(() => {
+      setTimeout(() => {
+        checkMyAboutMeOffsetTop();
+      }, 200);
     });
     aboutMe.current && check.observe(aboutMe.current)
     return () => {
