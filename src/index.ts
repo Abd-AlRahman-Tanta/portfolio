@@ -99,6 +99,24 @@ export let projects: Array<project> = [
     liveLink: "https://abd-alrahman-tanta.github.io/tanding/",
     projectDescription: "Trending is a website that showcases the latest popular topics, news, and viral content from around the world. It helps users stay updated with what’s currently gaining attention on social media, news outlets, and entertainment. The platform covers various categories like technology, fashion, sports, and more. Users can explore trending videos, articles, and posts all in one place. Trending offers personalized recommendations based on user interests to keep content relevant. It encourages sharing and discussion to connect people around hot topics. The site is easy to navigate with regularly updated content to keep users engaged. Overall, Trending helps users discover and follow what’s popular in real time.",
     repoLink: "https://github.com/Abd-AlRahman-Tanta/tanding"
+  },
+  {
+    id: `${count++}`,
+    projectName: "DashBoard",
+    projectTools: "React-Typescript",
+    img: "/portfolio/assets/imgs/dash.png",
+    liveLink: "https://manage-pi-flax.vercel.app/",
+    projectDescription: "A dashboard website project provides a centralized, interactive interface for monitoring and analyzing key data in real time. It features customizable widgets, charts, and metrics tailored to user needs—whether for business analytics, system performance, or personal tracking. Built with modern web technologies like React or Vue.js, it ensures responsiveness and seamless user experience across devices. The dashboard supports data integration from multiple sources, enabling informed decision-making at a glance.",
+    repoLink: "https://github.com/Abd-AlRahman-Tanta/manage"
+  },
+  {
+    id: `${count++}`,
+    projectName: "MySandwitch",
+    projectTools: "React-Typescript",
+    img: "/portfolio/assets/imgs/rest.png",
+    liveLink: "https://food-requests.vercel.app/",
+    projectDescription: "A restaurant website project showcases a dining establishment’s menu, ambiance, and services in an engaging, user-friendly format. It includes essential features like online reservations, food ordering, photo galleries, and contact information. Designed with responsive layouts, it ensures seamless browsing on both desktop and mobile devices. The site enhances customer experience while driving bookings and takeout orders through intuitive navigation and appealing visuals.",
+    repoLink: "https://github.com/Abd-AlRahman-Tanta/food-requests"
   }
 ]
 
