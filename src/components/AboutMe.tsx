@@ -68,7 +68,7 @@ const AboutMe = () => {
         </div>
       </div>
       <div className={` flex justify-between flex-col-reverse items-center gap-10 lg:flex-row px-[20px] lg:px-[70px] opacity-0 -translate-x-10 ${stretch ? "opacity-100 translate-x-0" : ""} duration-[1s,2s] `}>
-        <img className="lg:max-w-[510px] w-full" src={`${localStorage.getItem("mode") == "dark" ? "/portfolio/assets/imgs/aboutme-circes-dark.png" : "/portfolio/assets/imgs/aboutme-circles.png"}`} alt="" />
+        <img className="lg:max-w-[510px] w-full" src={`${localStorage.getItem("mode") == "dark" ? "/portfolio/assets/imgs/aboutme-circes-dark.webp" : "/portfolio/assets/imgs/aboutme-circles.webp"}`} alt="" />
         <div>
           <div className="mb-[40px]">
             <h1 className="text-mainText dark:text-dark-mainText text-[40px] font-semibold mb-3  ">About Me</h1>

@@ -39,7 +39,7 @@ const Hero = () => {
       <img className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] h-[420px] object-cover rounded-2xl" src="/portfolio/assets/imgs/me.jpg" alt="" />
       <FaArrowDown className={`text-2xl text-[#0C96E2]  animate-bounce  lg:absolute lg:bottom-10 lg:left-1/2 lg:-translate-x-1/2 `} />
       <div className="lg:w-max w-full lg:text-start text-center relative ">
-        <div className="absolute w-full h-full bg-[url(/assets/imgs/radial.png)] blur-3xl -z-10"></div>
+        <div className="absolute w-full h-full bg-[url(/assets/imgs/radial.webp)] blur-3xl -z-10"></div>
         <h1 className="lg:w-max duration-30 w-full text-[36px] lg:text-[40px] xl:text-[55px] leading-[120%] mb-5">HEY! <span className="font-bold">I’m <br /> <span className="bg-gradient-to-r from-[#60a5fa] to-[#38bdf8] bg-clip-text text-transparent ">Abd Al-Rahman</span>, <br />
           Frontend Developer</span>
         </h1>
