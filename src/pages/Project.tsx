@@ -111,7 +111,7 @@ const Project = () => {
                   <img src={project.img} alt="" className=" h-full w-full  absolute top-0  z-10 object-cover  " />
                   <div onTouchStart={checkOnScrollStart} onTouchMove={checkOnScroll} onTouchEnd={checkOnTouch} className={` bg-[#00000080] w-full h-full absolute z-20 opacity-0 ${show && "opacity-100"} group-hover:opacity-100  duration-300 `}></div>
                   <Link onTouchEnd={() => setShow(false)} className={` group/link w-8 absolute top-1/2 -translate-y-1/2 left-1/3 -translate-x-1/3 z-30 opacity-0 scale-0 ${show && "  opacity-100 scale-100 "} group-hover:opacity-100 group-hover:scale-100   cursor-pointer delay-200 duration-300`} to={`/project/${id}`}>
-                    <img className="group-hover/link:scale-110 duration-300" src="/portfolio/assets/imgs/icon2.webp" alt="" />
+                    <img className="group-hover/link:scale-110 duration-300" src="/assets/imgs/icon2.webp" alt="" />
                   </Link>
                   <BsArrowsFullscreen onTouchEnd={() => setShow(false)} onClick={() => setFull(!full)} className={`absolute top-1/2 -translate-y-1/2 right-1/3 -translate-x-1/3 z-30 opacity-0 scale-0  ${show && "opacity-100 scale-100"}  group-hover:opacity-100 group-hover:scale-100  cursor-pointer hover:scale-110 delay-200 duration-300 text-2xl text-white `} />
                 </div>
@@ -119,7 +119,7 @@ const Project = () => {
                   <div className="flex justify-between items-center gap-4  ">
                     <h1 className="text-mainText dark:text-dark-mainText font-semibold text-[28px]">{project.projectName}</h1>
                     <a title="Live Project" className="hover:scale-110 duration-300" href={project.liveLink} target="-blank" >
-                      <img className="w-8" src="/portfolio/assets/imgs/Icon.webp" alt="" />
+                      <img className="w-8" src="/assets/imgs/Icon.webp" alt="" />
                     </a>
                   </div>
                   <p className=" mb-6 mt-4 text-[18px] text-mainText dark:text-dark-mainText leading-[28px] ">{project.projectDescription}</p>

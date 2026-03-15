@@ -64,7 +64,7 @@ const MyProjects = () => {
       </div>
       <div className={` ${stretch ? "opacity-100 -translate-y-0" : "opacity-0 -translate-y-10"} delay-200 mt-[80px] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  lg:grid-cols-[1fr_1fr_1fr] transition-[color,background-color,opacity,translate] duration-[0.3s,0.3s,1s,2s] gap-5`}>
         {
-          [...projects].reverse().map((project) => {
+          [...projects].map((project) => {
             if (count >= 6)
               return;
             else {

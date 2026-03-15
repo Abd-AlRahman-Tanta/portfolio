@@ -26,9 +26,7 @@ const routes = createBrowserRouter([
       }
     ]
   }
-], {
-  basename: "/portfolio"
-})
+])
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider router={routes} />

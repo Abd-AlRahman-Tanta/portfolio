@@ -15,7 +15,7 @@ const App = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   useEffect(() => {
     const img = new Image();
-    img.src = "/portfolio/assets/imgs/me.jpg";
+    img.src = "/assets/imgs/me.jpg";
     img.onload = () => {
       setLoaded(true);
     }
@@ -58,7 +58,7 @@ const App = () => {
                 <a target="_blank" href="#" className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] w-[40px] h-[40px] rounded-full bg-[#0C96E2] text-white text-[20px] flex justify-center items-center ">
                   <GrLinkedin />
                 </a>
-                <a target="_blank" href="mailto:iamwhitebeard2@gmail.com" className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] w-[40px] h-[40px] rounded-full bg-[#0C96E2] text-white text-[20px] flex justify-center items-center "><TfiEmail /></a>
+                <a target="_blank" href="mailto:abdtanta31@gmail.com" className=" dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] w-[40px] h-[40px] rounded-full bg-[#0C96E2] text-white text-[20px] flex justify-center items-center "><TfiEmail /></a>
               </div>
             </footer>
           </div>

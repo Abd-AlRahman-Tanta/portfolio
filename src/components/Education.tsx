@@ -60,14 +60,14 @@ const Education = () => {
 
   return (
     <div ref={education} className="mt-[80px] px-[20px] lg:px-[80px] relative z-10 overflow-hidden ">
-      <img src="/portfolio/assets/imgs/image2.svg" className={`absolute right-0 top-0 hidden sm:block`} alt="" />
+      <img src="/assets/imgs/image2.svg" className={`absolute right-0 top-0 hidden sm:block`} alt="" />
       <div className={` mb-32 lg:mb-20 lg:text-center ${stretch ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"} duration-[1s,2s]`}>
         <p className="text-[#0C96E2] font-medium text-[20px] mb-2">Education and Experience</p>
         <h1 className="text-mainText dark:text-dark-mainText font-semibold text-[40px]   ">Education & Experience</h1>
       </div>
       <div className="flex flex-col lg:flex-row justify-between items-center min-h-[288px] gap-10 ">
         <div className="flex justify-center items-center lg:items-start gap-10">
-          <img src={`${localStorage.getItem("mode") == "dark" ? "/portfolio/assets/imgs/frame2.webp" : "/portfolio/assets/imgs/frame.webp"}`} className={`${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-200`} alt="" />
+          <img src={`${localStorage.getItem("mode") == "dark" ? "/assets/imgs/frame2.webp" : "/assets/imgs/frame.webp"}`} className={`${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-200`} alt="" />
           <div>
             <div className={`mb-5 ${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-300`}>
               <h2 className="text-mainText dark:text-dark-mainText font-medium text-2xl mb-2.5">Experince Designer</h2>
@@ -80,7 +80,7 @@ const Education = () => {
           </div>
         </div>
         <div className="flex justify-center items-center lg:items-start gap-10">
-          <img src={`${localStorage.getItem("mode") == "dark" ? "/portfolio/assets/imgs/frame2.webp" : "/portfolio/assets/imgs/frame.webp"}`} className={`${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-[600ms]`} alt="" />
+          <img src={`${localStorage.getItem("mode") == "dark" ? "/assets/imgs/frame2.webp" : "/assets/imgs/frame.webp"}`} className={`${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-[600ms]`} alt="" />
           <div>
             <div className={`mb-5 ${stretch ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} duration-[1s,2s] delay-[700ms]`}>
               <h2 className="text-mainText dark:text-dark-mainText font-medium text-2xl mb-2.5">Soft Skills</h2>
@@ -94,11 +94,11 @@ const Education = () => {
         </div>
       </div>
       <div className={`h-[50px] w-full relative my-14`}>
-        <img src="/portfolio/assets/imgs/image1.svg" className={`absolute -left-5 lg:-left-[70px] -bottom-[100px] hidden sm:block`} alt="" />
+        <img src="/assets/imgs/image1.svg" className={`absolute -left-5 lg:-left-[70px] -bottom-[100px] hidden sm:block`} alt="" />
         <button onClick={() => { window.scrollTo({ top: offset?.sectionScroll.home && offset?.sectionScroll.home - 140, behavior: "smooth" }) }} className={` top-0 absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0   w-[50px] h-[50px] bg-[#0C96E2] dark:shadow-[0_4px_7px_0_#ffffff33] shadow-[0_4px_7px_0_#00000033] flex justify-center items-center rounded-xl text-white text-xl hover:scale-105 transition-[scale,opacity,translate] duration-[0.2s,1s,2s] cursor-pointer ${stretch ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"} `}><FaArrowUp className="animate-bounce" /></button>
       </div>
       <div ref={tryMe} className={` mb-10 text-center lg:text-start min-h-[348px] w-full relative flex flex-col lg:flex-row justify-center items-center  gap-8 ${stretch2 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-[opacity,translate] duration-[1s,2s] `}>
-        <img src="/portfolio/assets/imgs/pur.webp" className={`absolute w-full h-full -z-10 rounded-[32px]`} alt="" />
+        <img src="/assets/imgs/pur.webp" className={`absolute w-full h-full -z-10 rounded-[32px]`} alt="" />
         <div className={`w-full h-full bg-[#0C96E2] absolute rounded-[32px] -z-20 -rotate-2 `}></div>
         <div className="max-w-[580px] m-8">
           <h1 className=" text-dark-mainText font-semibold text-5xl mb-8">Try me out, risk free!</h1>

@@ -109,7 +109,7 @@ ${data.current.message}
           </div>
           <div className=" my-10 flex flex-col sm:flex-row  justify-start items-center gap-4  ">
             <div className=" w-[60px] h-[60px] rounded-md bg-[#0C96E2] text-white text-[20px] flex justify-center items-center "><TfiEmail /></div>
-            <p className="text-[14px]  text-secondText flex flex-col justify-start items-center sm:items-start gap-1.5  ">Email me <span className="sm:text-[18px] font-medium text-mainText dark:text-dark-mainText duration-300  ">iamwhitebeard2@gmail.com</span></p>
+            <p className="text-[14px]  text-secondText flex flex-col justify-start items-center sm:items-start gap-1.5  ">Email me <span className="sm:text-[18px] font-medium text-mainText dark:text-dark-mainText duration-300  ">abdtanta31@gmail.com</span></p>
           </div>
           <div className=" flex flex-col sm:flex-row  justify-start items-center gap-4  ">
             <div className=" w-[60px] h-[60px] rounded-md bg-[#0C96E2] text-white text-[20px] flex justify-center items-center "><IoLocationSharp /></div>

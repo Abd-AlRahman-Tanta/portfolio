@@ -28,7 +28,7 @@ const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, p
         <img className={`absolute w-full h-full z-10 object-cover rounded-t-lg`} src={img} alt="" />
         <div onTouchStart={checkOnScrollStart} onTouchMove={checkOnScroll} onTouchEnd={checkOnTouch} className={` bg-[#00000080] w-full h-full absolute z-20 opacity-0 ${show && "opacity-100"} group-hover:opacity-100  duration-300 `}></div>
         <Link onTouchEnd={() => setShow(false)} className={` group/link w-8 absolute top-1/2 -translate-y-1/2 left-1/3 -translate-x-1/3 z-30 opacity-0 scale-0 ${show && "  opacity-100 scale-100 "} group-hover:opacity-100 group-hover:scale-100   cursor-pointer delay-200 duration-300`} to={`/project/${id}`}>
-          <img className="group-hover/link:scale-110 duration-300" src="/portfolio/assets/imgs/icon2.webp" alt="" />
+          <img className="group-hover/link:scale-110 duration-300" src="/assets/imgs/icon2.webp" alt="" />
         </Link>
         <BsArrowsFullscreen onTouchEnd={() => setShow(false)} onClick={() => setFull(!full)} className={`absolute top-1/2 -translate-y-1/2 right-1/3 -translate-x-1/3 z-30 opacity-0 scale-0  ${show && "opacity-100 scale-100"}  group-hover:opacity-100 group-hover:scale-100  cursor-pointer hover:scale-110 delay-200 duration-300 text-2xl text-white `} />
       </div>
@@ -40,7 +40,7 @@ const Card = ({ img, projectName, projectTools, liveLink, id }: { img: string, p
         <p className=" duration-300 py-3 px-1.5 text-[15px] text-center bg-[#e3eaf8] dark:bg-[#232d42] text-[#0C96E2] rounded-2xl ">{projectTools}</p>
         <a style={{ flexDirection: `${window.innerWidth < 300 ? "column" : "row"}` }} title="Live Project" className={` hover:scale-110 rounded-2xl p-3 bg-[#e3eaf8] dark:bg-[#232d42] duration-300 flex  text-[14px] justify-center items-center text-[#0C96E2] gap-2.5 `} href={liveLink} target="-blank" >
           Live
-          <img className="w-7" src="/portfolio/assets/imgs/Icon.webp" alt="" />
+          <img className="w-7" src="/assets/imgs/Icon.webp" alt="" />
         </a>
       </div>
 
